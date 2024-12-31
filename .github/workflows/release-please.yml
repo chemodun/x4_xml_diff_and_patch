@@ -18,6 +18,7 @@ jobs:
 
       - name: Release Please Action
         uses: google-github-actions/release-please-action@v3
+        id: release
         with:
           release-type: python  # Specifies that it's a Python project
           # Optional configurations:
