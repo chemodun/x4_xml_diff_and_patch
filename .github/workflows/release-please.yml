@@ -35,7 +35,7 @@ jobs:
 
       -
         name: Build Executables
-        uses: .github/workflows/build-executables.yml
+        uses: ./.github/workflows/build-executables.yml
         if: ${{ steps.release.outputs.release_created }}
 
       # Step 4: Attach Executables to Release
