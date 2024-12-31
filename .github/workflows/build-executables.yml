@@ -1,11 +1,13 @@
 name: Build Executables
 
 on:
-  workflow_call:  # Triggered by the release-please workflow
-  workflow_dispatch:  # Allows manual triggering of the workflow
+  push:
+    tags:
+      - 'v*'
 
 permissions:
   contents: write
+  packages: write
 
 jobs:
   build-and-release:
@@ -58,5 +60,41 @@ jobs:
           path: |
             dist/xml-diff${{ matrix.os == 'windows-latest' && '.exe' || '' }}
             dist/xml-patch${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      # Step 8: Attach Linux Diff Executable to Release
+      - name: Attach Linux Diff Executable to Release
+        uses: softprops/action-gh-release@v1
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          files: ./dist/xml-diff
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      # Step 9: Attach Linux Patch Executable to Release
+      - name: Attach Linux Patch Executable to Release
+        uses: softprops/action-gh-release@v1
+        if: matrix.os == 'ubuntu-latest'
+        with:
+          files: ./dist/xml-patch
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      # Step 10: Attach Windows Diff Executable to Release
+      - name: Attach Windows Diff Executable to Release
+        uses: softprops/action-gh-release@v1
+        if: matrix.os == 'windows-latest'
+        with:
+          files: ./dist-windows/xml-diff.exe
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      # Step 11: Attach Windows Patch Executable to Release
+      - name: Attach Windows Patch Executable to Release
+        uses: softprops/action-gh-release@v1
+        if: matrix.os == 'windows-latest'
+        with:
+          files: ./dist-windows/xml-patch.exe
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}

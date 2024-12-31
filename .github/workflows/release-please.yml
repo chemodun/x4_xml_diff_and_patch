@@ -14,7 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
 
-      - uses: actions/checkout@v4
+      -
+        name: Checkout repository
+        id: checkout
+        uses: actions/checkout@v4
 
       - name: Release Please Action
         uses: google-github-actions/release-please-action@v3
@@ -26,41 +29,3 @@ jobs:
           # bump-minor-pre-major: true
           # monorepo-tags: true
           token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-
-      -
-        name: Build Executables
-        uses: chemodun/x4_xml_diff_and_patch/.github/workflows/build-executables.yml@main
-        if: ${{ steps.release.outputs.release_created }}
-
-      # Step 4: Attach Executables to Release
-      - name: Attach Linux Executable to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./dist/xml-diff
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Attach Linux Patch Executable to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./dist/xml-patch
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Attach Windows Executable to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./dist-windows/xml-diff.exe
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-        if: ${{ steps.release.outputs.release_created }}
-
-      - name: Attach Windows Patch Executable to Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: ./dist-windows/xml-patch.exe
-        env:
-          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-        if: ${{ steps.release.outputs.release_created }}
