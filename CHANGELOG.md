@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.4](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.3...v0.2.4) (2024-12-31)
+
+
+### Documentation
+
+* Enhance README with detailed usage instructions for XML diff and patch tools ([aaf46b2](https://github.com/chemodun/x4_xml_diff_and_patch/commit/aaf46b2d4f56538df77f7dd5b2eb3c023533ea8e))
+* Update README with detailed usage instructions and examples for XML diff and patch tools ([76acdae](https://github.com/chemodun/x4_xml_diff_and_patch/commit/76acdae6f67f6d0cb6d89f9ee9c7f663e06950da))
+
 ## [0.2.3](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.2...v0.2.3) (2024-12-31)
 
 
