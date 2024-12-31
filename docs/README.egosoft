@@ -1,17 +1,17 @@
-[size=150][u]Modding tools: XML diff and patch for X4: Foundations[/u][/size]
+[size=5][u]Modding tools: XML diff and patch for X4: Foundations[/u][/size]
 
 This tool is a simple XML diff and patch tool for X4: Foundations. It is designed to help modders to compare and patch XML files.
 
 The format of diff XML files is compatible with the gave [b]diff.xsd[/b] format definition. It is means - you can you this tool to create diff files for any XML files used in game.
 Also, you can use this tool to patch XML files with diff files, this action has reason to check how your diff file will be applied to the vanilla XML file.
 
-[size=120][u]Important note[/u][/size]
+[size=4][u]Important note[/u][/size]
 This tool is highly dependent on [b]diff.xsd[/b] file. It is usually located in the [b]libraries[/b] folder of the extracted game content.
 
 The best option - to copy this file to the same folder where the tool is located. Otherwise - all tools have a [b]--xsd[/b] option to specify the path to the [b]diff.xsd[/b] file.
 
 
-[size=120][u]How to use[/u][/size]
+[size=4][u]How to use[/u][/size]
 [list=1]
 [*]Download the latest release from the [url=https://github.com/chemodun/x4_xml_diff_and_patch/releases/]releases page[/url] for a platform of your choice.
     [list]
@@ -26,19 +26,19 @@ The best option - to copy this file to the same folder where the tool is located
 [*]Copy the files to any useful location.
 [/list]
 
-[size=100][u]As a binary[/u][/size]
+[size=3][u]As a binary[/u][/size]
 [list=1]
 [*]Run the binary file:[list]
     [*]For Windows run [b]xml-diff.exe[/b] or [b]xml-patch.exe[/b].
     [*]For Linux run [b]xml-diff[/b] or [b]xml-patch[/b].[/list]
 [*]Use the [b]--help[/b] option to see the available commands.
 [/list]
-[size=100][u]As a python script[/u][/size][list=1]
+[size=3][u]As a python script[/u][/size][list=1]
 [*]Install the required dependencies using [b]pip install -r requirements.txt[/b].
 [*]Run the script using [b]python xml-diff.py[/b] or [b]python xml-patch.py[/b].
 [*]Use the [b]--help[/b] option to see the available commands.
 [/list]
-[size=100][u]How to create a diff file[/u][/size]
+[size=3][u]How to create a diff file[/u][/size]
 There is a command line help for the [b]xml-diff[/b] tool:
 [code]
 usage: xml-diff.exe [-h] [--xsd DIFF_XSD] [original_xml] [modified_xml] [diff_xml]
@@ -59,7 +59,7 @@ Example:
 [code]
 xml-diff.exe vanilla.xml modified.xml diff.xml
 [/code]
-[size=100][u]Example of resulting diff files[/u][/size]
+[size=3][u]Example of resulting diff files[/u][/size]
 There the is example of the diff files created by tool:[list]
   [*]with add operation:
 [code]
@@ -86,7 +86,7 @@ There the is example of the diff files created by tool:[list]
 [/code]
 [/list]
 
-[size=100][u]How to apply a diff file[/u][/size]
+[size=3][u]How to apply a diff file[/u][/size]
 There is a command line help for the [b]xml-patch[/b] tool:
 [code]
 usage: xml-patch.exe [-h] [--xsd DIFF_XSD] [original_xml] [diff_xml] [output_xml]
@@ -108,7 +108,7 @@ Example:
 xml-patch.exe vanilla.xml diff.xml modified.xml
 [/code]
 
-[size=100][u]Example of resulting patched XML files[/u][/size]
+[size=3][u]Example of resulting patched XML files[/u][/size]
 There the is example of the patched XML files created by tool:[list]
   [*]with add operation:
 [code]
@@ -147,11 +147,11 @@ There the is example of the patched XML files created by tool:[list]
         <set_value name="$speakline" exact="10304" comment="Awaiting orders."/>
 [/code]
 [/list]
-[size=100][u]If output XML is a directory[/u][/size]
+[size=3][u]If output XML is a directory[/u][/size]
 If the output XML is a directory, the tool will create a new XML file with the same name as the original XML file in the output directory.
 For example, if the original XML file is [b]vanilla.xml[/b] and the output directory is [b]output[/b], the tool will create a new XML file [b]output/vanilla.xml[/b].
 
-[size=100][u]How to apply a tools to a directories[/u][/size]
+[size=3][u]How to apply a tools to a directories[/u][/size]
 You can apply the tools to directories. In this case, the tools will apply the diff or patch to all XML files in the directory.
 The logic will be a next:[list]
   [*]all input parameters are directories - the tools will apply the diff or patch to all XML files in the directories.
