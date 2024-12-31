@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.3](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.2...v0.2.3) (2024-12-31)
+
+
+### Bug Fixes
+
+* requirements.txt format ([1c1365f](https://github.com/chemodun/x4_xml_diff_and_patch/commit/1c1365f86437d5218b21188f051d2d2f57bf587a))
+
 ## [0.2.2](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.1...v0.2.2) (2024-12-31)
 
 
