@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.0...v0.2.1) (2024-12-31)
+
+
+### Bug Fixes
+
+* Update path to build executables in release workflow ([12768f8](https://github.com/chemodun/x4_xml_diff_and_patch/commit/12768f8459b23eebc22ab963245622545d7bb85a))
+
 ## [0.2.0](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.1.0...v0.2.0) (2024-12-31)
 
 
