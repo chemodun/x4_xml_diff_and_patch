@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.2](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.1...v0.2.2) (2024-12-31)
+
+
+### Bug Fixes
+
+* Remove unnecessary package permissions from build workflow ([d46cade](https://github.com/chemodun/x4_xml_diff_and_patch/commit/d46cade9ecf78cdfa3cd0429f8ffd43caf135db8))
+* Update paths for Windows executables in build workflow ([b67e477](https://github.com/chemodun/x4_xml_diff_and_patch/commit/b67e47712ada2f604a8a72d71f9afdf2c0aa3228))
+
 ## [0.2.1](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.0...v0.2.1) (2024-12-31)
 
 
