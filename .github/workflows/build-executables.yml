@@ -86,7 +86,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: matrix.os == 'windows-latest'
         with:
-          files: ./dist-windows/xml-diff.exe
+          files: ./dist/xml-diff.exe
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
@@ -95,6 +95,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: matrix.os == 'windows-latest'
         with:
-          files: ./dist-windows/xml-patch.exe
+          files: ./dist/xml-patch.exe
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
