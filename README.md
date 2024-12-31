@@ -2,8 +2,8 @@
 
 This tool is a simple XML diff and patch tool for X4: Foundations. It is designed to help modders to compare and patch XML files.
 
-The format of diff XML files is compatible with the gave diff.xsd format definition. It is means - you can you this tool to create diff files for any XML files used in game.
-Also you can use this tool to patch XML files with diff files, this action has reason to check how your diff file will be applied to the vanilla XML file.
+The format of diff XML files is compatible with the gave `diff.xsd` format definition. It is means - you can you this tool to create diff files for any XML files used in game.
+Also, you can use this tool to patch XML files with diff files, this action has reason to check how your diff file will be applied to the vanilla XML file.
 
 ## Important note
 This tool is highly dependent on `diff.xsd` file. It is usually located in the `libraries` folder of the extracted game content.
