@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.11](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.10...v0.2.11) (2025-01-14)
+
+
+### Bug Fixes
+
+* **ci:** update build workflow to attach executables and remove Windows-specific condition ([d900a7b](https://github.com/chemodun/x4_xml_diff_and_patch/commit/d900a7b0d93a8985bc504464ded000aa8ca5d21d))
+
 ## [0.2.10](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.9...v0.2.10) (2025-01-14)
 
 
