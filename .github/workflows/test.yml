@@ -34,6 +34,7 @@ jobs:
       # Step 5: Build Executables with Nuitka
       - name: Build Executable with Nuitka
         run: |
+          python -m nuitka --help
           python -m nuitka --mingw64 xml-diff.py
           python -m nuitka --mingw64 xml-patch.py
           ls -l dist
