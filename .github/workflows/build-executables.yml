@@ -62,8 +62,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
-      # Step 8: Attach Executable to Release
-      - name: Attach Linux Diff Executable to Release
+      # Step 8: Attach Executables to Release
+      - name: Attach Executables to Release
         uses: softprops/action-gh-release@v2
         with:
           files: |
@@ -76,7 +76,6 @@ jobs:
       -
         name: VirusTotal Scan
         uses: crazy-max/ghaction-virustotal@v4
-        if: matrix.os == 'windows-latest'
         with:
           update_release_body: true
           vt_api_key: ${{ secrets.VT_API_KEY }}
