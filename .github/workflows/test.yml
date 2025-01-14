@@ -36,21 +36,19 @@ jobs:
         run: |
           pyinstaller xml-diff.py
           pyinstaller xml-patch.py
+          Compress-Archive -Path dist -DestinationPath dist.zip
           ls -l .
         shell: powershell
 
-      # Step 6: Upload Executables as Artifacts
-      # - name: Upload Executables as Artifacts
-      #   uses: actions/upload-artifact@v4
-      #   with:
-      #     name: executables-upload
-      #     path: |
-      #       xml-diff.exe
-      #       xml-diff.zip
-      #       xml-patch.exe
-      #       xml-patch.zip
-      #   env:
-      #     GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+      #Step 6: Upload Executables as Artifacts
+      - name: Upload Executables as Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: executables-upload
+          path: |
+            dist.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
 
       # Step 9: Scan with VirusTotal
