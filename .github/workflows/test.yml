@@ -36,7 +36,7 @@ jobs:
       # Step 5: Download upx
       - name: Download upx
         run: |
-          Invoke-WebRequest -Uri "https://github.com/upx/upx/releases/download/v4.2.4/upx-4.2.4-win32.zip" -OutFile "upx-4.2.4-win2.zip"
+          Invoke-WebRequest -Uri "https://github.com/upx/upx/releases/download/v4.2.4/upx-4.2.4-win32.zip" -OutFile "upx-4.2.4-win32.zip"
           Expand-Archive -Path "upx-4.2.4-win32.zip" -DestinationPath  "."
 
       # Step 5: Build Executables with PyInstaller
