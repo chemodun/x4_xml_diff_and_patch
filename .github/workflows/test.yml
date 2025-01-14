@@ -36,6 +36,8 @@ jobs:
         run: |
           python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --standalone --onefile
           python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --standalone --onefile
+          ls -l xml-diff.dist
+          ls -l xml-patch.dist
           ls -l .
         shell: powershell
 
