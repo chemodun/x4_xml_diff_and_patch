@@ -84,7 +84,7 @@ jobs:
       # Step 9: Attach Windows Diff and Patch Archive to Release
       - name: Attach Windows Diff and Patch Archive to Release
         uses: softprops/action-gh-release@v1
-        if: matrix.os == 'windows-latest'
+        if: ${{ steps.release.outputs.release_created }}
         with:
           files: ./dist/x4_xml_diff_and_patch_windows.zip
         env:
