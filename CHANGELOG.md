@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.5](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.4...v0.2.5) (2025-01-14)
+
+
+### Documentation
+
+* Update README formatting for improved readability and consistency ([f6cc980](https://github.com/chemodun/x4_xml_diff_and_patch/commit/f6cc98053b20236c9df9c847f293c67e1cfb110b))
+
 ## [0.2.4](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.3...v0.2.4) (2024-12-31)
 
 
