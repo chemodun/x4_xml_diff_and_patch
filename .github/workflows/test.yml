@@ -37,6 +37,10 @@ jobs:
           pyinstaller xml-diff.py
           pyinstaller xml-patch.py
           Compress-Archive -Path dist -DestinationPath dist.zip
+          rm -r dist
+          pyinstaller xml-diff.py --onefile
+          pyinstaller xml-patch.py --onefile
+          Compress-Archive -Path dist\ -DestinationPath dist-onefile.zip
           ls -l .
         shell: powershell
 
@@ -47,6 +51,7 @@ jobs:
           name: executables-upload
           path: |
             dist.zip
+            dist-onefile.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
