@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.9](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.8...v0.2.9) (2025-01-14)
+
+
+### Bug Fixes
+
+* **ci:** fix ([45d2b44](https://github.com/chemodun/x4_xml_diff_and_patch/commit/45d2b449c82618571c3326e1d4b56ddfcaf241f7))
+
 ## [0.2.8](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.7...v0.2.8) (2025-01-14)
 
 
