@@ -20,6 +20,7 @@ jobs:
         with:
           python-version: '3.x'  # Specify the Python version
           check-latest: true
+          architecture: 'x32'
 
       # Step 3: Install dependencies
       - name: Install dependencies
