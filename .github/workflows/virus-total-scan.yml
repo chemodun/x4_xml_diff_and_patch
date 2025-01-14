@@ -17,6 +17,8 @@ jobs:
         with:
           update_release_body: true
           vt_api_key: ${{ secrets.VT_API_KEY }}
+          github_token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+          request_rate: 4
           files: |
-            *.zip
-            *.tar.gz
+            .zip$
+            .tar.gz$

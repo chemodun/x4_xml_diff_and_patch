@@ -13,7 +13,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
     steps:
       # Step 1: Checkout the repository
       - name: Checkout repository
@@ -61,9 +61,9 @@ jobs:
           Compress-Archive -Path x4_xml_diff_and_patch -DestinationPath x4_xml_diff_and_patch_windows.zip
         shell: powershell
 
-      # Step 7: Upload Executables as Artifacts
+      # Step 7: Upload Diff and Patch Archive as Artifacts
       - name: Upload Executables as Artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: executables-${{ matrix.os }}
           path: |
@@ -72,7 +72,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       # Step 8: Attach Linux Diff and Patch Archive to Release
-      - name: Attach Linux Diff Executable to Release
+      - name: Attach Linux Diff and Patch Archive to Release
         uses: softprops/action-gh-release@v1
         if: matrix.os == 'ubuntu-latest'
         with:
@@ -81,19 +81,10 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
       # Step 9: Attach Windows Diff and Patch Archive to Release
-      - name: Attach Windows Diff Executable to Release
+      - name: Attach Windows Diff and Patch Archive to Release
         uses: softprops/action-gh-release@v1
         if: matrix.os == 'windows-latest'
         with:
           files: ./dist/x4_xml_diff_and_patch_windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
-
-      - name: VirusTotal Scan
-        uses: crazy-max/ghaction-virustotal@v4
-        with:
-          update_release_body: true
-          vt_api_key: ${{ secrets.VT_API_KEY }}
-          files: |
-            *.zip
-            *.tar.gz
