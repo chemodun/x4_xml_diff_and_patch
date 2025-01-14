@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.12](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.11...v0.2.12) (2025-01-14)
+
+
+### Bug Fixes
+
+* **ci:** return back to archives ([bb61341](https://github.com/chemodun/x4_xml_diff_and_patch/commit/bb61341d1ae13a88cc192099d46c32c3bd001c01))
+
 ## [0.2.11](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.10...v0.2.11) (2025-01-14)
 
 
