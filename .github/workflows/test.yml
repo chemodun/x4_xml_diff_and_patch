@@ -19,6 +19,8 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'  # Specify the Python version
+          check-latest: true
+          architecture: x64
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -26,33 +28,33 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      # Step 4: Install Nuitka
-      - name: Install Nuitka
+      # Step 4: Install PyInstaller
+      - name: Install PyInstaller
         run: |
-          python -m pip install nuitka
+          pip install pyinstaller
 
-      # Step 5: Build Executables with Nuitka
-      - name: Build Executable with Nuitka
+      # Step 5: Download upx
+      - name: Download upx
         run: |
-          python -m nuitka xml-diff.py --assume-yes-for-downloads --standalone
-          python -m nuitka xml-patch.py --assume-yes-for-downloads --standalone
-          mv xml-diff.dist xml-diff
-          mv xml-patch.dist xml-patch
-          Compress-Archive -Path xml-diff -DestinationPath xml-diff.zip
-          Compress-Archive -Path xml-patch -DestinationPath xml-patch.zip
-          python -m nuitka xml-diff.py --assume-yes-for-downloads --onefile --verbose
-          python -m nuitka xml-patch.py --assume-yes-for-downloads --onefile --verbose
+          Invoke-WebRequest -Uri "https://github.com/upx/upx/releases/download/v4.2.4/upx-4.2.4-win64.zip" -OutFile "upx-4.2.4-win64.zip"
+          Expand-Archive -Path "upx-4.2.4-win64.zip" -DestinationPath  "."
+
+      # Step 5: Build Executables with PyInstaller
+      - name: Build Executable with PyInstaller
+        run: |
+          pyinstaller xml-diff.py --onefile --upx-dir upx-4.2.4-win64
+          pyinstaller xml-patch.py --onefile --upx-dir upx-4.2.4-win64
+          Compress-Archive -Path dist\ -DestinationPath dist-onefile.zip
           ls -l .
         shell: powershell
 
-      # Step 6: Upload Executables as Artifacts
+      #Step 6: Upload Executables as Artifacts
       - name: Upload Executables as Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: executables-upload
           path: |
-            xml-diff.exe
-            xml-patch.exe
+            dist-onefile.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
@@ -67,4 +69,4 @@ jobs:
           github_token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           request_rate: 4
           files: |
-            .exe$
+            .zip$
