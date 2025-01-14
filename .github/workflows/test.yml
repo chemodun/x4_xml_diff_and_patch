@@ -20,7 +20,6 @@ jobs:
         with:
           python-version: '3.x'  # Specify the Python version
           check-latest: true
-          architecture: x64
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -36,14 +35,14 @@ jobs:
       # Step 5: Download upx
       - name: Download upx
         run: |
-          Invoke-WebRequest -Uri "https://github.com/upx/upx/releases/download/v4.2.4/upx-4.2.4-win64.zip" -OutFile "upx-4.2.4-win64.zip"
-          Expand-Archive -Path "upx-4.2.4-win64.zip" -DestinationPath  "."
+          Invoke-WebRequest -Uri "https://github.com/upx/upx/releases/download/v4.2.4/upx-4.2.4-win32.zip" -OutFile "upx-4.2.4-win2.zip"
+          Expand-Archive -Path "upx-4.2.4-win32.zip" -DestinationPath  "."
 
       # Step 5: Build Executables with PyInstaller
       - name: Build Executable with PyInstaller
         run: |
-          pyinstaller xml-diff.py --onefile --upx-dir upx-4.2.4-win64
-          pyinstaller xml-patch.py --onefile --upx-dir upx-4.2.4-win64
+          pyinstaller xml-diff.py --onefile --upx-dir upx-4.2.4-win32
+          pyinstaller xml-patch.py --onefile --upx-dir upx-4.2.4-win32
           Compress-Archive -Path dist\ -DestinationPath dist-onefile.zip
           ls -l .
         shell: powershell
