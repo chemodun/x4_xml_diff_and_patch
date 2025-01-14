@@ -34,10 +34,14 @@ jobs:
       # Step 5: Build Executables with Nuitka
       - name: Build Executable with Nuitka
         run: |
-          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --standalone --onefile
-          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --standalone --onefile
-          ls -l xml-diff.dist
-          ls -l xml-patch.dist
+          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --standalone
+          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --standalone
+          mv xml-diff.dist xml-diff
+          mv xml-patch.dist xml-patch
+          Compress-Archive -Path xml-diff -DestinationPath xml-diff.zip
+          Compress-Archive -Path xml-patch -DestinationPath xml-patch.zip
+          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --onefile --verbose
+          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --onefile --verbose
           ls -l .
         shell: powershell
 
@@ -47,8 +51,8 @@ jobs:
         with:
           name: executables-upload
           path: |
-            xml-diff.dist/xml-diff.exe
-            xml-patch.dist/xml-patch.exe
+            xml-diff.zip
+            xml-patch.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
