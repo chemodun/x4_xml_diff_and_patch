@@ -40,8 +40,8 @@ jobs:
           mv xml-patch.dist xml-patch
           Compress-Archive -Path xml-diff -DestinationPath xml-diff.zip
           Compress-Archive -Path xml-patch -DestinationPath xml-patch.zip
-          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --onefile --verbose
-          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --onefile --verbose
+          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --onefile
+          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --onefile
           ls -l .
         shell: powershell
 
@@ -51,7 +51,9 @@ jobs:
         with:
           name: executables-upload
           path: |
+            xml-diff.exe
             xml-diff.zip
+            xml-patch.exe
             xml-patch.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
