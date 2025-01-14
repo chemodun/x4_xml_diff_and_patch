@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.6](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.5...v0.2.6) (2025-01-14)
+
+
+### Bug Fixes
+
+* Enhance VirusTotal scan workflow with permissions and release body update ([95497a2](https://github.com/chemodun/x4_xml_diff_and_patch/commit/95497a28ce0f649e52fc61a86167d9b921c1f8d8))
+
 ## [0.2.5](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.4...v0.2.5) (2025-01-14)
 
 
