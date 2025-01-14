@@ -34,8 +34,8 @@ jobs:
       # Step 5: Build Executables with Nuitka
       - name: Build Executable with Nuitka
         run: |
-          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads
-          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads
+          python -m nuitka --mingw64 xml-diff.py --assume-yes-for-downloads --standalone
+          python -m nuitka --mingw64 xml-patch.py --assume-yes-for-downloads --standalone
           ls -l .
         shell: powershell
 
