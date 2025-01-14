@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.2.8](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.7...v0.2.8) (2025-01-14)
+
+
+### Bug Fixes
+
+* **ci:** Update condition for attaching Windows Diff and Patch Archive to release ([92862d4](https://github.com/chemodun/x4_xml_diff_and_patch/commit/92862d4a4d56513a7ed06045ff9efd2f7c7a423f))
+* **ci:** Update workflows to streamline artifact uploads and enhance VirusTotal scan configuration ([aa816ec](https://github.com/chemodun/x4_xml_diff_and_patch/commit/aa816ec6939f59c3bfc5eb0db36b28b8c2bfdb24))
+
 ## [0.2.7](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.6...v0.2.7) (2025-01-14)
 
 
