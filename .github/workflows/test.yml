@@ -39,6 +39,20 @@ jobs:
           ls -l .
         shell: powershell
 
+      # Step 6: Upload Executables as Artifacts
+      - name: Upload Executables as Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: executables-upload
+          path: |
+            xml-diff.exe
+            xml-diff.cmd
+            xml-patch.exe
+            xml-patch.cmd
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+
       # Step 9: Scan with VirusTotal
       -
         name: VirusTotal Scan
