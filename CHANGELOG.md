@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.7](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.6...v0.2.7) (2025-01-14)
+
+
+### Bug Fixes
+
+* **ci:** Update file patterns for VirusTotal scan workflows to use glob syntax ([e35e22d](https://github.com/chemodun/x4_xml_diff_and_patch/commit/e35e22da4bdb4e9d1f9fadc10c85037f9524305b))
+
 ## [0.2.6](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.5...v0.2.6) (2025-01-14)
 
 
