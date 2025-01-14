@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.10](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.9...v0.2.10) (2025-01-14)
+
+
+### Bug Fixes
+
+* **ci:** update build workflow to streamline executable creation and artifact uploads ([6f803da](https://github.com/chemodun/x4_xml_diff_and_patch/commit/6f803da5e9ef36f8084af16ca894befd660548a9))
+
 ## [0.2.9](https://github.com/chemodun/x4_xml_diff_and_patch/compare/v0.2.8...v0.2.9) (2025-01-14)
 
 
