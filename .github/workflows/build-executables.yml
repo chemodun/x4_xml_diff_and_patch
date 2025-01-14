@@ -88,3 +88,12 @@ jobs:
           files: ./dist/x4_xml_diff_and_patch_windows.zip
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      - name: VirusTotal Scan
+        uses: crazy-max/ghaction-virustotal@v4
+        with:
+          update_release_body: true
+          vt_api_key: ${{ secrets.VT_API_KEY }}
+          files: |
+            .zip$
+            .tar.gz$
