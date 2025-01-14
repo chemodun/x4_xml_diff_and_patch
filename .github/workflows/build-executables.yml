@@ -23,6 +23,7 @@ jobs:
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'  # Specify the Python version
+          check-latest: true
 
       # Step 3: Install dependencies
       - name: Install dependencies
@@ -32,8 +33,7 @@ jobs:
 
       # Step 4: Install PyInstaller
       - name: Install PyInstaller
-        run: |
-          pip install pyinstaller
+        run: pip install pyinstaller
 
       # Step 5: Build Executables with PyInstaller (Linux)
       - name: Build Executable with PyInstaller (Linux)
@@ -41,6 +41,11 @@ jobs:
         run: |
           pyinstaller --onefile xml-diff.py
           pyinstaller --onefile xml-patch.py
+          cd dist
+          mkdir -p x4_xml_diff_and_patch
+          cp xml-diff x4_xml_diff_and_patch/
+          cp xml-patch x4_xml_diff_and_patch/
+          tar -czvf x4_xml_diff_and_patch_linux.tar.gz x4_xml_diff_and_patch
         shell: bash
 
       # Step 6: Build Executables with PyInstaller (Windows)
@@ -49,30 +54,42 @@ jobs:
         run: |
           pyinstaller --onefile xml-diff.py
           pyinstaller --onefile xml-patch.py
+          cd dist
+          mkdir -p  x4_xml_diff_and_patch
+          cp xml-diff.exe x4_xml_diff_and_patch/
+          cp xml-patch.exe x4_xml_diff_and_patch/
+          Compress-Archive -Path x4_xml_diff_and_patch -DestinationPath x4_xml_diff_and_patch_windows.zip
         shell: powershell
 
-      # Step 7: Upload Executables as Artifacts
-      - name: Upload Executables as Artifacts
+      # Step 7: Upload Diff and Patch Archive as Artifacts
+      - name: Upload Diff and Patch Archive as Artifacts
         uses: actions/upload-artifact@v4
         with:
           name: executables-${{ matrix.os }}
           path: |
-            dist/xml-diff${{ matrix.os == 'windows-latest' && '.exe' || '' }}
-            dist/xml-patch${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+            dist/x4_xml_diff_and_patch${{ matrix.os == 'windows-latest' && '_windows.zip' || '_linux.tar.gz' }}
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
-      # Step 8: Attach Executables to Release
-      - name: Attach Executables to Release
+      # Step 8: Attach Linux Diff and Patch Archive to Release
+      - name: Attach Linux Diff and Patch Archive to Release
         uses: softprops/action-gh-release@v2
+        if: matrix.os == 'ubuntu-latest'
         with:
-          files: |
-            ./dist/xml-diff${{ matrix.os == 'windows-latest' && '.exe' || '' }}
-            ./dist/xml-patch${{ matrix.os == 'windows-latest' && '.exe' || '' }}
+          files: ./dist/x4_xml_diff_and_patch_linux.tar.gz
         env:
           GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
 
-      # Step 9: Scan with VirusTotal
+      # Step 9: Attach Windows Diff and Patch Archive to Release
+      - name: Attach Windows Diff and Patch Archive to Release
+        uses: softprops/action-gh-release@v2
+        if: matrix.os == 'windows-latest'
+        with:
+          files: ./dist/x4_xml_diff_and_patch_windows.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
+
+      # Step 10: Scan with VirusTotal
       -
         name: VirusTotal Scan
         uses: crazy-max/ghaction-virustotal@v4
@@ -82,5 +99,4 @@ jobs:
           github_token: ${{ secrets.MY_RELEASE_PLEASE_TOKEN }}
           request_rate: 4
           files: |
-            .diff${{ matrix.os == 'windows-latest' && '.exe' || '' }}$
-            .patch${{ matrix.os == 'windows-latest' && '.exe' || '' }}$
+            .${{ matrix.os == 'windows-latest' && 'zip' || 'tar.gz' }}$
